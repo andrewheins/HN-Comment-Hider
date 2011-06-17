@@ -1,0 +1,81 @@
+
+if (typeof jQuery == 'undefined') {
+	var jQ = document.createElement('script');
+	jQ.type = 'text/javascript';
+	jQ.onload=runthis;
+	jQ.src = 'http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js';
+	document.body.appendChild(jQ);
+} else {
+	runthis();
+}
+
+function runthis() {
+
+	if(window.location.href.indexOf("http://news.ycombinator.com/item") === -1) {
+		return;
+	}
+
+	var rows = $(".default");
+
+	var getRank = function(ele) {
+		var imgWidth = $(ele).closest("tr").children("td:first-child").find("img").width();
+		if (imgWidth > 0) {
+			return imgWidth / 40;
+		}
+		else {
+			return imgWidth;
+		}
+	}
+
+	var findInList = function(ele) {
+		var targ = $(ele).closest(".default");
+		for (var i = 0; i < rows.length; i++) {
+			if (targ[0] === rows[i]) {
+				return i;
+			}
+		}
+	}
+
+	var toggleChildComments = function(ele) {
+		var thisRank = getRank(ele),
+				pos = findInList(ele),
+				childNodes = [];
+		for (var i = pos + 1; i < rows.length; i++) {
+			if (getRank(rows[i]) > thisRank) {
+				if ($(ele).hasClass("hide_children")) {
+					$(rows[i]).closest("tr").parent().closest("tr").show();
+				} else {
+					$(rows[i]).closest("tr").parent().closest("tr").hide();
+				}
+				childNodes.push(rows[i]);
+			} else {
+			break;
+			}
+		}
+
+		if ($(ele).hasClass("hide_children")) {
+			$(ele).removeClass("hide_children");
+			$(ele).closest("td").children(".comment, p").show();
+			$(ele).html("[-]");
+		} else {
+			$(ele).addClass("hide_children");
+			$(ele).closest("td").children(".comment, p").hide();
+			$(ele).html('[+] (' + childNodes.length + ' children)');
+		}
+
+		return childNodes;
+	}
+
+	
+
+	var toggleBtn = $('<a href="#" class="commentToggle" style="padding-right: 1em; font-family: monospace;">[-]</a>');
+	$("span.comhead").not(':first').prepend(toggleBtn);
+
+	$(".commentToggle").click(function(e) {
+		toggleChildComments(e.target);
+
+		e.preventDefault();
+	});
+
+}
+
