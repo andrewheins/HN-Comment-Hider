@@ -1,0 +1,10 @@
+{
+	"name": "Reddit-Style Comments for Hacker News",
+	"version": "1.0",
+	"description": "Adds a simple toggle to hide/show comments in discussion threads on Hacker News",
+	"content_scripts": [{
+		"matches": ["http://news.ycombinator.com/item*"],
+		"js": ["jquery.min.js", "hnhider.js"]
+	}]
+
+}
