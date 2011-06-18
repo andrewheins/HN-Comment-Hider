@@ -5,6 +5,7 @@
 	"content_scripts": [{
 		"matches": ["http://news.ycombinator.com/item*"],
 		"js": ["jquery.min.js", "hnhider.js"]
-	}]
+	}],
+	"homepage_url": "https://github.com/andrewheins/HN-Comment-Hider"
 
 }
