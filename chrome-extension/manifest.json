@@ -1,11 +1,12 @@
 {
 	"name": "Reddit-Style Comments for Hacker News",
-	"version": "1.0",
+	"version": "1.1",
 	"description": "Adds a simple toggle to hide/show comments in discussion threads on Hacker News",
 	"content_scripts": [{
-		"matches": ["http://news.ycombinator.com/item*"],
+		"matches": ["http://news.ycombinator.com/item*", "http://hackerne.ws/item*"],
 		"js": ["jquery.min.js", "hnhider.js"]
 	}],
-	"homepage_url": "https://github.com/andrewheins/HN-Comment-Hider"
+	"homepage_url": "https://github.com/andrewheins/HN-Comment-Hider",
+	"icons": {"128": "yc.gif"}
 
 }

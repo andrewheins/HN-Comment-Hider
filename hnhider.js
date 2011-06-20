@@ -11,7 +11,7 @@ if (typeof jQuery == 'undefined') {
 
 function runthis() {
 
-	if(window.location.href.indexOf("http://news.ycombinator.com/item") === -1) {
+	if(window.location.href.indexOf("http://news.ycombinator.com/item") === -1 && window.location.href.indexOf("http://hackerne.ws/item") === -1) {
 		return;
 	}
 
@@ -60,7 +60,9 @@ function runthis() {
 		} else {
 			$(ele).addClass("hide_children");
 			$(ele).closest("td").children(".comment, p").hide();
-			$(ele).html('[+] (' + childNodes.length + ' children)');
+			var msg = '[+] (' + childNodes.length;
+			msg += childNodes.length === 1 ? ' child)' : ' children)';		
+			$(ele).html(msg);
 		}
 
 		return childNodes;
