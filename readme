@@ -1,3 +1,7 @@
 This is a very simple jQuery script which adds Reddit-style comment show/hide to Hacker News discussion threads.
 
 I couldn't live without 'em, personally.
+
+
+Chrome Extension: https://chrome.google.com/webstore/detail/gcomokcpehnfjcegfilpfenjnjfkefpc
+GreaseMonkey Script: http://userscripts.org/scripts/show/105251
