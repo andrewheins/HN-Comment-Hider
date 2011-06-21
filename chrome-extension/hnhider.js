@@ -63,7 +63,7 @@ function runthis() {
 	
 
 	var toggleBtn = $('<a href="#" class="commentToggle" style="padding-right: 1em; font-family: monospace;">[-]</a>');
-	$("span.comhead").not(':first').prepend(toggleBtn);
+	$("span.comhead").not('td.title span.comhead').prepend(toggleBtn);
 
 	$(".commentToggle").click(function(e) {
 		toggleChildComments(e.target);
