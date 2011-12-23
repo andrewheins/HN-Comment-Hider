@@ -11,7 +11,8 @@ if (typeof jQuery == 'undefined') {
 
 function runthis() {
 
-	if(window.location.href.indexOf("http://news.ycombinator.com/item") === -1 && window.location.href.indexOf("http://hackerne.ws/item") === -1) {
+	var hnUrl = /^https?:\/\/(news\.ycombinator\.com|hackerne\.ws)\/item/;
+	if ( !hnUrl.test(window.location.href) ) {
 		return;
 	}
 

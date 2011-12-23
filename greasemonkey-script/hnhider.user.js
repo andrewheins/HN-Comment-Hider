@@ -4,14 +4,16 @@
 // @namespace https://github.com/andrewheins/HN-Comment-Hider
 // @include http://news.ycombinator.com/item*
 // @include http://hackerne.ws/item*
+// @include https://news.ycombinator.com/item*
+// @include https://hackerne.ws/item*
 // @require https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js
-// @include http://hackerne.ws/item*
 // ==/UserScript==
 
 
 function runthis() {
 
-	if(window.location.href.indexOf("http://news.ycombinator.com/item") === -1 && window.location.href.indexOf("http://hackerne.ws/item") === -1) {
+	var hnUrl = /^https?:\/\/(news\.ycombinator\.com|hackerne\.ws)\/item/;
+	if ( !hnUrl.test(window.location.href) ) {
 		return;
 	}
 
